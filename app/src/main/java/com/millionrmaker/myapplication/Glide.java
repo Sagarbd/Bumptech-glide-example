@@ -1,7 +1,5 @@
 package com.millionrmaker.myapplication;
 
-import android.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -44,7 +42,7 @@ public class Glide extends AppCompatActivity {
         io.reactivex.Observable<List<PHOTO>> observable = api.getPhotodata().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
 
-        dBhelper = (DBhelper) OpenHelperManager.getHelper(this, DBhelper.class);
+        dBhelper =  OpenHelperManager.getHelper(this, DBhelper.class);
         final RuntimeExceptionDao<PHOTO, Integer> dao = dBhelper.getRuntimeExceptionDao();
 
 
@@ -87,7 +85,7 @@ public class Glide extends AppCompatActivity {
                 fragmentManager = getFragmentManager();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.add(R.id.container, fragment1);
-               fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
 
             }
