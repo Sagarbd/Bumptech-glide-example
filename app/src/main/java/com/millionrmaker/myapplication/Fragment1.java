@@ -21,15 +21,10 @@ List<PHOTO> list;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment,container,false);
         ViewPager viewPager = view.findViewById(R.id.viewpager);
-
-
         DBhelper dBhelper = (DBhelper) OpenHelperManager.getHelper(getActivity(),DBhelper.class);
         RuntimeExceptionDao<PHOTO,Integer> dao = dBhelper.getRuntimeExceptionDao();
         list = dao.queryForAll();
-
-
         ViewpagerAdapter viewpagerAdapter = new ViewpagerAdapter(getActivity(),list);
-
         viewPager.setAdapter(viewpagerAdapter);
         return view;
     }
